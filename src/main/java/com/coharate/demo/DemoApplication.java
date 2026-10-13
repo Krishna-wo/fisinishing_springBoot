@@ -2,6 +2,7 @@ package com.coharate.demo;
 import com.coharate.demo.imp.EmailNotificationService;
 import com.coharate.demo.imp.SmsNotifiantionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
@@ -14,7 +15,8 @@ public class DemoApplication implements CommandLineRunner {
 
 	// constructore di
 	final NotificaitonService notificaitonService;
-	public DemoApplication(NotificaitonService notificaitonService) {
+	public DemoApplication(
+			@Qualifier("SmsNotify") NotificaitonService notificaitonService) {
 		this.notificaitonService = notificaitonService;
 	}
 	public static void main(String[] args) {
