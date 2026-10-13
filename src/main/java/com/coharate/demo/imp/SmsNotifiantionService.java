@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 //@Primary // this we get primary
 @Component
 //@Qualifier("SmsNotify")
-@ConditionalOnProperty(
-        name = "notification.type",
-        havingValue = "sms"
-)
+//@ConditionalOnProperty(
+//        name = "notification.type",
+//        havingValue = "sms"
+//)
 public class SmsNotifiantionService implements NotificaitonService {
     @Override
     public void send(String message) {

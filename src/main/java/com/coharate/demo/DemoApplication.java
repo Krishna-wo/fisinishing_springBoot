@@ -7,6 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
 //
@@ -14,10 +17,12 @@ public class DemoApplication implements CommandLineRunner {
 //	NotificaitonService notificaitonService; // thsi where field dipendcy injeciotn but we have to construciton di
 
 	// constructore di
-	final NotificaitonService notificaitonService;
-	public DemoApplication(NotificaitonService notificaitonService) {
-		this.notificaitonService = notificaitonService;
-	}
+//	final NotificaitonService notificaitonService;
+//	public DemoApplication(NotificaitonService notificaitonService) {
+//		this.notificaitonService = notificaitonService;
+//	}
+	@Autowired
+	Map<String , NotificaitonService> notificaitonServiceMap=new HashMap<>();
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
@@ -29,7 +34,12 @@ public class DemoApplication implements CommandLineRunner {
 //		NotificaitonService notificaitonService2 = new EmailNotificationService();
 //		notificaitonService2.send("Hello World");
 //		// but we want to cahnge it dy=namicaaly
-		notificaitonService.send("Hello World!");
+
+		for(var notificaitonService:notificaitonServiceMap.entrySet()){
+			System.out.println(notificaitonService.getKey());
+			notificaitonService.getValue().send("Hello World");
+
+		}
 
 	}
 }
