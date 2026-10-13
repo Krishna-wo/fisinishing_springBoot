@@ -15,8 +15,7 @@ public class DemoApplication implements CommandLineRunner {
 
 	// constructore di
 	final NotificaitonService notificaitonService;
-	public DemoApplication(
-			@Qualifier("SmsNotify") NotificaitonService notificaitonService) {
+	public DemoApplication(NotificaitonService notificaitonService) {
 		this.notificaitonService = notificaitonService;
 	}
 	public static void main(String[] args) {
